@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState } from 'react';
+import ColorForm from './components/form';
+import DisplayBox from './components/display';
+    
+    
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    const [boxes, setBoxes] = useState([]);
 
+    const newBox = ( color ) => {
+      setBoxes([...boxes, color]);
+    }
+
+
+    return (
+        <>
+          <ColorForm newBox={ newBox } />
+          <DisplayBox boxes={ boxes } />
+        </>
+    );
+
+}
+    
 export default App;
